@@ -56,16 +56,47 @@ public class MyView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {  //手勢的源頭在這邊 一定要有他
-//        Log.v("leo","onTouch");
-        return gd.onTouchEvent(event);
+
+        float ex = event.getX() , ey = event.getY();
+        if (ex >= 1537 && ex <= 2085 && ey >=550 && ey <= 940 ){
+            if(event.getAction() == MotionEvent.ACTION_DOWN){
+
+            }else if (event.getAction() == MotionEvent.ACTION_MOVE){
+
+            }else if (event.getAction() == MotionEvent.ACTION_UP){
+
+            }
+            Log.v("leo",event.getX() + " : " + event.getY());
+        }
+        return true ; // gd.onTouchEvent(event);
     }
 
     //手勢
     private class MyGDListener extends GestureDetector.SimpleOnGestureListener{
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            Log.v("leo",velocityX+" x "+velocityY
-            );
+            Log.v("leo",velocityX+" x "+velocityY);
+
+            if(Math.abs(velocityX)>Math.abs(velocityY)){
+                //左右
+                if(velocityX > 100){
+                    //right
+                }
+                if(velocityX< -100){
+                    //left
+                }
+            }
+            if(Math.abs(velocityX)<Math.abs(velocityY)){
+                //上下
+                if(velocityY< -100){
+                    //up
+                }
+                if(velocityY > 100){
+                    //down
+                }
+
+            }
+
             return super.onFling(e1, e2, velocityX, velocityY);
         }
 
